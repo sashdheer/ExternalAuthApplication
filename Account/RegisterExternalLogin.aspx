@@ -22,6 +22,15 @@
                     <asp:ModelErrorMessage runat="server" ModelStateKey="email" CssClass="text-error" />
                 </div>
             </div>
+             <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="username" CssClass="col-md-2 control-label">User Name</asp:Label>
+                <div class="col-md-10">
+                    <asp:TextBox runat="server" ID="username" CssClass="form-control" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="username"
+                        Display="Dynamic" CssClass="text-danger" ErrorMessage="UserName is required" />
+                    <asp:ModelErrorMessage runat="server" ModelStateKey="username" CssClass="text-error" />
+                </div>
+            </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">

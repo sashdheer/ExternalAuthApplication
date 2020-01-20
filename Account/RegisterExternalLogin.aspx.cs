@@ -93,8 +93,12 @@ namespace GoogleAuthLogin.Account
                 return;
             }
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            {
+                RequireUniqueEmail = false,
+            };
             var signInManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
-            var user = new ApplicationUser() { UserName = email.Text, Email = email.Text };
+            var user = new ApplicationUser() { UserName = username.Text, Email = email.Text };
             IdentityResult result = manager.Create(user);
             if (result.Succeeded)
             {
