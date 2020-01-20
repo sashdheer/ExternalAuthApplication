@@ -13,6 +13,8 @@
             var id = $(this).parent().attr("id");
             $(this).addClass('fa-' + id);
         });
+
+        $("#microsoft_img").addClass('fa fa-windows');
     });
 </script>
 <div id="socialLoginList">
@@ -21,7 +23,7 @@
     <div class="row">
         <div style="display:flex; flex-direction:row; justify-content:left; align-items:center">
             <%foreach (string Item in GetProviderNames()) {%>
-                <div id="social" class="col-md-2">
+                <div id="social" style="margin-right:5px">
                     <button type="submit" class="btn btn-social-icon" name="provider" id="<%: Item.ToLower() %>" value="<%: Item %>"
                         title="Log in using your <%: Item %> account.">
                         <span class="fa" id="<%: Item.ToLower() %>_img">

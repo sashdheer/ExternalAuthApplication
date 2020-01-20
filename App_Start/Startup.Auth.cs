@@ -47,13 +47,14 @@ namespace GoogleAuthLogin
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "1df8ee8a-84ce-4f9e-a28e-a2f9eb3310a1",
+                clientSecret: "Ze/AC@d0RY4D-knrTuFCjC9]sylBreH0"
+                 );
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "YzwLOdcToHPdRnkvIPImTkf8F",
+               consumerSecret: "pa1DZfovc3TbjPFSTAD6iOH2sXISlpTZpqlBUoxIEK9cB1QrSs");
 
             app.UseFacebookAuthentication(
                appId: "2585385571681255",
