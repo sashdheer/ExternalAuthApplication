@@ -44,7 +44,7 @@ namespace GoogleAuthLogin
             {
                // CookieSameSite = SameSiteMode.Lax,
                 CookieName = "dendis.SharedCookie",
-                CookieDomain = ".dendis.com",
+                CookieDomain = "dendis.com",
                  AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
               //  AuthenticationType = "Identity.Application",
                 LoginPath = new PathString("/Account/Login"),
