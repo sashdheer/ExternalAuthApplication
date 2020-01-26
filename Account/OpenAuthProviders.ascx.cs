@@ -11,6 +11,7 @@ namespace GoogleAuthLogin.Account
     public partial class OpenAuthProviders : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
+
         {
             if (IsPostBack)
             {
@@ -20,21 +21,11 @@ namespace GoogleAuthLogin.Account
                     return;
                 }
 
-                ReturnUrl = "http://localhost:63096/About";
-
-                // Request a redirect to the external login provider
-                string redirectUrl = ResolveUrl(String.Format(CultureInfo.InvariantCulture, "~/Account/RegisterExternalLogin?{0}={1}&returnUrl={2}", IdentityHelper.ProviderNameKey, provider, ReturnUrl));
-                var properties = new AuthenticationProperties() { RedirectUri = redirectUrl };
-                // Add xsrf verification when linking accounts
-                if (Context.User.Identity.IsAuthenticated)
-                {
-                    properties.Dictionary[IdentityHelper.XsrfKey] = Context.User.Identity.GetUserId();
-                }
-                Context.GetOwinContext().Authentication.Challenge(properties, provider);
-                Response.StatusCode = 401;
-                Response.End();
+                ReturnUrl = "63096";
+                Response.Redirect(string.Format("http://work.dendis.com:59320/default.aspx?provider={0}&code={1}", provider, ReturnUrl));
             }
         }
+
 
         public string ReturnUrl { get; set; }
 
