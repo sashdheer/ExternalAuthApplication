@@ -6,8 +6,11 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
+using Owin.Security.Providers.LinkedIn;
 using Owin;
 using GoogleAuthLogin.Models;
+using Microsoft.AspNetCore.DataProtection;
+using System.IO;
 
 namespace GoogleAuthLogin
 {
@@ -21,12 +24,29 @@ namespace GoogleAuthLogin
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            //Installed nuget package : Microsoft.AspNetCore.DataProtection.Extensions
+/*
+            var provider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"),
+                                            (builder) => {
+                                                builder.SetApplicationName("sharedApp");
+                                                builder.PersistKeysToFileSystem(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"));
+                                            });
+            Microsoft.AspNetCore.DataProtection.IDataProtector protector = provider.CreateProtector(
+                                            "Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware",
+                                            "Identity.Application",
+                                            "v2");
+
+    */
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+               // CookieSameSite = SameSiteMode.Lax,
+                CookieName = "dendis.SharedCookie",
+                CookieDomain = ".dendis.com",
+                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+              //  AuthenticationType = "Identity.Application",
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
@@ -35,6 +55,8 @@ namespace GoogleAuthLogin
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
+
+
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
@@ -47,6 +69,11 @@ namespace GoogleAuthLogin
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
+
+            app.UseLinkedInAuthentication(
+                clientId: "77zv4547le3lhj",
+                clientSecret: "J6iKzPS46jHfQumb" );
+
             app.UseMicrosoftAccountAuthentication(
                 clientId: "1df8ee8a-84ce-4f9e-a28e-a2f9eb3310a1",
                 clientSecret: "Ze/AC@d0RY4D-knrTuFCjC9]sylBreH0"

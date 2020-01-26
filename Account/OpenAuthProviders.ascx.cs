@@ -19,6 +19,9 @@ namespace GoogleAuthLogin.Account
                 {
                     return;
                 }
+
+                ReturnUrl = "http://localhost:63096/About";
+
                 // Request a redirect to the external login provider
                 string redirectUrl = ResolveUrl(String.Format(CultureInfo.InvariantCulture, "~/Account/RegisterExternalLogin?{0}={1}&returnUrl={2}", IdentityHelper.ProviderNameKey, provider, ReturnUrl));
                 var properties = new AuthenticationProperties() { RedirectUri = redirectUrl };
