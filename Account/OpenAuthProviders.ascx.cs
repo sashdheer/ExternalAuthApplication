@@ -21,8 +21,8 @@ namespace GoogleAuthLogin.Account
                     return;
                 }
 
-                ReturnUrl = "80";
-                Response.Redirect(string.Format("http://work.dendis.com:80/default.aspx?provider={0}&code={1}", provider, ReturnUrl));
+                var districtName = "NY1";
+                Response.Redirect(string.Format("http://api.mls.com:80/default.aspx?provider={0}&districtName={1}", provider, districtName));
             }
         }
 

@@ -512,7 +512,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63096</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://mlw.dendis.com:80/</IISUrl>
+          <IISUrl>http://NY1.mls.com:80/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://NY1.mls.com:80/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
