@@ -70,9 +70,9 @@ namespace GoogleAuthLogin
 
             // Uncomment the following lines to enable logging in with third party login providers
 
-            app.UseLinkedInAuthentication(
-                clientId: "77zv4547le3lhj",
-                clientSecret: "J6iKzPS46jHfQumb" );
+            //   app.UseLinkedInAuthentication(
+            //     clientId: "77zv4547le3lhj",
+            //      clientSecret: "J6iKzPS46jHfQumb");
 
             app.UseMicrosoftAccountAuthentication(
                 clientId: "1df8ee8a-84ce-4f9e-a28e-a2f9eb3310a1",
@@ -89,8 +89,10 @@ namespace GoogleAuthLogin
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "600241086206-c955o0fmt4je554425unb77kes68al68.apps.googleusercontent.com",
-                ClientSecret = "Tpl9135L7w42mZui7dxvBuBJ"
+                // ClientId = "600241086206-c955o0fmt4je554425unb77kes68al68.apps.googleusercontent.com",
+                // ClientSecret = "Tpl9135L7w42mZui7dxvBuBJ"
+                ClientId = "470149037738-p4e2p1m7f211795nibm4b7mks3cqsv4s.apps.googleusercontent.com",
+                ClientSecret = "G7kAN0NG8WM7ZiOvRieNLYX9"
             });
         }
     }

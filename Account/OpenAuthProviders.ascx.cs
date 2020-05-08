@@ -21,8 +21,8 @@ namespace GoogleAuthLogin.Account
                     return;
                 }
 
-                ReturnUrl = "63096";
-                Response.Redirect(string.Format("http://work.dendis.com:59320/default.aspx?provider={0}&code={1}", provider, ReturnUrl));
+                ReturnUrl = "80";
+                Response.Redirect(string.Format("http://work.dendis.com:80/default.aspx?provider={0}&code={1}", provider, ReturnUrl));
             }
         }
 
